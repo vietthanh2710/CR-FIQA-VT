@@ -1,7 +1,7 @@
 from easydict import EasyDict as edict
 
 config = edict()
-config.dataset = "webface" # training dataset
+config.dataset = "emoreIresNet" # training dataset
 config.embedding_size = 512 # embedding size of evaluation
 config.momentum = 0.9
 config.weight_decay = 5e-4
@@ -16,7 +16,7 @@ config.beta=0.5
 
 
 # type of network to train [ iresnet100 | iresnet50 ]
-config.network = "iresnet50"
+config.network = "iresnet100"
 
 
 
