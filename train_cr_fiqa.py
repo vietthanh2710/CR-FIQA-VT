@@ -25,7 +25,8 @@ torch.backends.cudnn.benchmark = True
 
 def main(args):
     dist.init_process_group(backend='nccl', init_method='env://')
-    local_rank = args.local_rank
+    # local_rank = args.local_rank
+    local_rank = 0
     torch.cuda.set_device(local_rank)
     rank = dist.get_rank()
     world_size = dist.get_world_size()
@@ -174,7 +175,7 @@ def main(args):
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser(description='PyTorch CR-FIQA Training')
-    parser.add_argument('--local_rank', type=int, default=0, help='local_rank')
+    parser.add_argument('--local-rank', type=int, default=0, help='local_rank')
     parser.add_argument('--loss', type=str, default="CR_FIQA_LOSS", help="loss function")
     parser.add_argument('--resume', type=int, default=0, help="resume training")
     args_ = parser.parse_args()
