@@ -25,8 +25,8 @@ torch.backends.cudnn.benchmark = True
 
 def main(args):
     dist.init_process_group(backend='nccl', init_method='env://')
-    # local_rank = args.local_rank
-    local_rank = 0
+    local_rank = args.local_rank
+    # local_rank = 0
     torch.cuda.set_device(local_rank)
     rank = dist.get_rank()
     world_size = dist.get_world_size()
