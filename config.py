@@ -1,13 +1,13 @@
 from easydict import EasyDict as edict
 
 config = edict()
-config.dataset = "emoreIresNet" # training dataset
+config.dataset = "webface" # training dataset
 config.embedding_size = 512 # embedding size of evaluation
 config.momentum = 0.9
 config.weight_decay = 5e-4
 config.batch_size = 32 # batch size per GPU
 config.lr = 0.01
-config.output = "kaggle/working/output/R50_CRFIQA" # train evaluation output folder
+config.output = "output/R50_CRFIQA" # train evaluation output folder
 config.global_step=0 # step to resume
 config.s=64.0
 config.m=0.50
@@ -36,7 +36,7 @@ if config.dataset == "emoreIresNet":
     config.lr_func = lr_step_func
 
 elif config.dataset == "webface":
-    config.rec = "data/faces_webface_112x112"
+    config.rec = "/kaggle/input/casia-webface/casia-webface"
     config.num_classes = 10572
     config.num_image = 501195
     config.num_epoch = 34   #  [22, 30, 35] [22, 30, 40]
