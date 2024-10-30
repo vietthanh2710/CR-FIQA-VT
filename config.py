@@ -16,7 +16,7 @@ config.beta=0.5
 
 
 # type of network to train [ iresnet100 | iresnet50 ]
-config.network = "iresnet100"
+config.network = "iresnet50"
 
 
 
