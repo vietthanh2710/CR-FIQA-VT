@@ -170,6 +170,11 @@ def main(args):
 
         callback_checkpoint(global_step, backbone, header)
 
+    Backbone_SAVE_PATH = "/w/fr_weight.pth"
+    Header_SAVE_PATH = "/w/header_weight.pth"
+    torch.save(backbone.state_dict(), Backbone_SAVE_PATH)
+    torch.save(header.state_dict(), Header_SAVE_PATH)
+
     dist.destroy_process_group()
 
 
