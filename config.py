@@ -22,7 +22,8 @@ config.network = "iresnet100"
 
 
 if config.dataset == "emoreIresNet":
-    config.rec = "datafaces_emore"
+    # config.rec = "datafaces_emore"
+    config.rec = "/kaggle/input/ms1m-arcface/faces_emore"
     config.num_classes = 85742
     config.num_image = 5822653
     config.num_epoch =  18
