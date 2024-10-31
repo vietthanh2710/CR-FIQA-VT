@@ -39,7 +39,7 @@ elif config.dataset == "webface":
     config.rec = "/kaggle/input/casia-webface/casia-webface"
     config.num_classes = 10572
     config.num_image = 501195
-    config.num_epoch = 34   #  [22, 30, 35] [22, 30, 40]
+    config.num_epoch = 20   #  [22, 30, 35] [22, 30, 40]
     config.warmup_epoch = -1
     config.val_targets = ["lfw", "cfp_fp", "agedb_30"]
     config.eval_step= 958 #33350
