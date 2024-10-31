@@ -140,12 +140,15 @@ def main(args):
     alpha=10.0  #10.0
     loss = AverageMeter()
     global_step = cfg.global_step
+    # Define the desired path
+    save_path = "/kaggle/working/w"
+    
+    # Create the directory if it doesn't exist
+    os.makedirs(save_path, exist_ok=True)
     for epoch in range(start_epoch, cfg.num_epoch):
-        if epoch % 5 == 0 and epoch > 0:
-            Backbone_SAVE_PATH = "/kaggle/working/w/fr_weight.pth"
-            Header_SAVE_PATH = "/kaggle/working/w/header_weight.pth"
-            torch.save(backbone.state_dict(), Backbone_SAVE_PATH)
-            torch.save(header.state_dict(), Header_SAVE_PATH)
+        if epoch % 2 == 1 and epoch > 0:
+            torch.save(backbone.state_dict(), os.path.join(save_path, "fr_weight.pth"))
+            torch.save(header.state_dict(), os.path.join(save_path, "header_weight_weight.pth"))
         train_sampler.set_epoch(epoch)
         for _, (img, label) in enumerate(train_loader):
             global_step += 1
