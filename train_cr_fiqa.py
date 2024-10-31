@@ -141,9 +141,9 @@ def main(args):
     loss = AverageMeter()
     global_step = cfg.global_step
     for epoch in range(start_epoch, cfg.num_epoch):
-        if epoch % 5 == 0:
-            Backbone_SAVE_PATH = "w/fr_weight.pth"
-            Header_SAVE_PATH = "w/header_weight.pth"
+        if epoch % 5 == 0 and epoch > 0:
+            Backbone_SAVE_PATH = "/kaggle/working/w/fr_weight.pth"
+            Header_SAVE_PATH = "/kaggle/working/w/header_weight.pth"
             torch.save(backbone.state_dict(), Backbone_SAVE_PATH)
             torch.save(header.state_dict(), Header_SAVE_PATH)
         train_sampler.set_epoch(epoch)
