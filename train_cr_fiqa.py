@@ -141,6 +141,11 @@ def main(args):
     loss = AverageMeter()
     global_step = cfg.global_step
     for epoch in range(start_epoch, cfg.num_epoch):
+        if epoch % 5 == 0:
+            Backbone_SAVE_PATH = "/w/fr_weight.pth"
+            Header_SAVE_PATH = "/w/header_weight.pth"
+            torch.save(backbone.state_dict(), Backbone_SAVE_PATH)
+            torch.save(header.state_dict(), Header_SAVE_PATH)
         train_sampler.set_epoch(epoch)
         for _, (img, label) in enumerate(train_loader):
             global_step += 1
@@ -169,11 +174,6 @@ def main(args):
         scheduler_header.step()
 
         callback_checkpoint(global_step, backbone, header)
-
-    Backbone_SAVE_PATH = "/w/fr_weight.pth"
-    Header_SAVE_PATH = "/w/header_weight.pth"
-    torch.save(backbone.state_dict(), Backbone_SAVE_PATH)
-    torch.save(header.state_dict(), Header_SAVE_PATH)
 
     dist.destroy_process_group()
 
